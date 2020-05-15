@@ -3,37 +3,44 @@
 // Make sure the pyramid has psaces on both the left and right sides
 
 
-// function pyramid(n){
+function pyramid(n){
 
-//   // // Solution #1
-//   // const midpoint = Math.floor((2 * n - 1) / 2);
-
-//   // for (let row = 0; row < n; row++){
-//   //   let level = "";
-
-//   //   for (let column = 0; column < 2 * n - 1; column++){
-//   //     if (midpoint - row <= column && midpoint + row >= column){
-//   //       level += "#";
-//   //     }
-//   //     else {
-//   //       level += " ";
-//   //     }
-//   //   }
-//   //   console.log(level)
-//   // }
+  // *** IMPORTANT ***
+  // Base of the pyramid = 2 * n - 1
+  // Midpoint of the pyramid = Math.floor((2 * n - 1) / 2)
 
 
+  // Solution #1
+  const midpoint = Math.floor((2 * n - 1) / 2);
+
+  for (let row = 0; row < n; row++){
+    let level = "";
+
+    for (let column = 0; column < 2 * n - 1; column++){
+      if (midpoint - row <= column && midpoint + row >= column){
+        level += "#";
+      }
+      else {
+        level += ".";
+      }
+    }
+    console.log(level)
+  }
 
 
-//   // let count = 1
+  // Solution #3 <-- Use this one when possible
+  let count = 1
+  let removeSpaces = 0;
 
-//   // const midpoint = Math.floor((2 * n - 1) / 2) - 1;
+  while (count <= n){
+    const midpoint = Math.floor((2 * (n-removeSpaces) - 1) / 2);
 
-//   // while (count <= n){
-//   //   console.log(`${" ".repeat(midpoint)}${"#".repeat(count)}${" ".repeat(midpoint)}`);
-//   //   count++
-//   // }
-// }
+    console.log(`${" ".repeat(midpoint)}${"#".repeat(2 * count - 1)}${" ".repeat(midpoint)}`);
+
+    count++;
+    removeSpaces++;
+  }
+}
 
 
 // Solution #2
